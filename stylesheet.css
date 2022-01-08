@@ -1,3 +1,6 @@
+* {
+  font-family: Futura;
+}
 .chart-input-form {
   display: flex;
   flex-direction: column;
@@ -35,4 +38,13 @@
 .chart-input-form h1, 
 .chart-input-form h2 {
   text-align: center;
+}
+button {
+  background-color: honeyDew;
+  align-self: flex-end;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+#remove-category {
+  background-color:red;
 }
