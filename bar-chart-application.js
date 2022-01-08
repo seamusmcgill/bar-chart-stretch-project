@@ -27,6 +27,12 @@ function addCategory() {
 
 // jQuery code to run functions on event handler instances
 $(document).ready(function() {
+  $
+  // Hide bar chart, title and x-axis and labels on load
+  $(".chart-title").hide();
+  $(".chart-container").hide();
+  $(".x-axis").hide();
+  $(".x-axis-label").hide();
   // Add category on button click
   $("#add-category").click(addCategory);
 });
