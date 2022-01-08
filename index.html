@@ -1,53 +1,83 @@
 <!DOCTYPE html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
   <div class="chart-input-form">
     <h1>BUILD YOUR OWN BAR CHART</h1>
-        <div class="form-row">
-          <div class="form-column">
-            <div class="input-group">
-              <label for="chart-title">Chart Title: </label>
-              <input id="chart-title">
-            </div>
-            <div class="input-group">
-              <label for="title-font">Title Font: </label>
-              <input id="title-font">
-            </div>
-            <div class="input-group">
-              <label for="title-size">Title Size: </label>
-              <input type="number" id="title-size" placeholder="Size units are pixels">
-            </div>
-            <div class="input-group">
-              <label for="title-colour">Title Colour: </label>
-              <input type="color" id="title-color">
-            </div>
-          </div>
-          <div class="form-column">
-            <div class="input-group">
-              <label for="y-axis-label">Y Axis Label: </label>
-              <input id="y-axis-label">
-            </div>
-            <div class="input-group">
-              <label for="x-axis-label">X Axis Label: </label>
-              <input id="x-axis-label">
-            </div>
-            <div class="input-group">
-              <label for="value-label-position">Value Label Position: </label>
-              <select id="value-label-position">
-                <option value="top">Top of Bar</option>
-                <option value="middle">Middle of Bar</option>
-                <option value="bottom">Bottom of Bar</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <label for="bar-spacing">Bar Spacing: </label>
-              <input type="number" id="bar-spacing" placeholder="Size units are pixels">
-            </div>
-          </div>
+    <!-- Section for user to customize appearance of bar chart -->
+    <div class="form-row">
+      <div class="form-column">
+        <div class="input-group">
+          <label for="chart-title">Chart Title: </label>
+          <input id="chart-title">
         </div>
+        <div class="input-group">
+          <label for="title-font">Title Font: </label>
+          <input id="title-font">
+        </div>
+        <div class="input-group">
+          <label for="title-size">Title Size: </label>
+          <input type="number" id="title-size" placeholder="Size units are pixels">
+        </div>
+        <div class="input-group">
+          <label for="title-colour">Title Colour: </label>
+          <input type="color" id="title-color">
+        </div>
+      </div>
+      <div class="form-column">
+        <div class="input-group">
+          <label for="y-axis-label">Y Axis Label: </label>
+          <input id="y-axis-label">
+        </div>
+        <div class="input-group">
+          <label for="x-axis-label">X Axis Label: </label>
+          <input id="x-axis-label">
+        </div>
+        <div class="input-group">
+          <label for="value-label-position">Value Label Position: </label>
+          <select id="value-label-position">
+            <option value="top">Top of Bar</option>
+            <option value="middle">Middle of Bar</option>
+            <option value="bottom">Bottom of Bar</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="bar-spacing">Bar Spacing: </label>
+          <input type="number" id="bar-spacing" placeholder="Size units are pixels">
+        </div>
+      </div>
+    </div>
+
+    <!-- Section for user to enter data for each bar -->
+    <h2>Data Entry</h2>
+      <div class="form-row data-entry category-1">
+        <div class="form-column">
+          <div class="input-group">
+            <label for="category-1-name">Category name: </label>
+            <input id="category-1-name">
+          </div>
+          <div class="input-group">
+            <label for="category-1-label-color">Label color: </label>
+            <input type="color" id="category-1-label-color">
+          </div>
+        <button id="add-category">+ Add Category</button>
+        </div>
+        <div class="form-column category-values">
+          <div class="input-group">
+            <label for="category-1-value-1">Value 1: </label>
+            <input type="number" id="category-1-value-1">
+          </div>
+          <div class="input-group">
+            <label for="category-1-value-1-color">Bar color: </label>
+            <input type="color" id="category-1-value-1-color">
+          </div>
+          <button class="add-category-1-value category-1">+ Add Value</button>
+        </div>
+      </div>
+      <input type="submit" name="submit" class="btn btn-primary" value="BUILD THAT CHART!"/>
   </div>
 
 </body>
