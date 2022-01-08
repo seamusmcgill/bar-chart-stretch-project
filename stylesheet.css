@@ -1,7 +1,38 @@
-.row {
+.chart-input-form {
   display: flex;
+  flex-direction: column;
+  background-color: azure;
+  border-radius: 5px;
+  padding: 1em;
 }
-
-.column {
-  flex: 50%;
+.form-row {
+  display: flex;
+  justify-content: center;
+  background-color: whiteSmoke;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.form-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2em 1em 1em 1em;
+}
+.input-group {
+   display: flex;
+}
+.input-group > label {
+  margin-right: 1em; 
+  flex: 30%;
+  padding: .5em 0;
+}
+.chart-input-form input,
+.chart-input-form select {
+  flex: 70%;
+  padding: .5em;
+  margin-bottom: 1em;
+}
+.chart-input-form h1, 
+.chart-input-form h2 {
+  text-align: center;
 }

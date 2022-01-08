@@ -4,33 +4,50 @@
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-  <h1>Create your own bar chart</h1>
-  <div class="row">
-    <div class="column">
-      <label for="chart-title">Chart title: </label>
-      <input id="chart-title" name="chart-title">
-    </div>
-    <div class="column">
-      <label for="bar-colour">Bar Colour: </label>
-      <input type="color" id="bar-colour" name="bar-colour">
-    </div>
-  </div>
-  <div class="row">
-    <div class="column">
-      <!-- FILL OUT THIS SECTION WITH FULL FUNCTIONALITY LATER -->
-      <label for="title-font">Title font: </label>
-      <select id="title-font" name="title-font">
-        <option value="Arial">Arial</option> 
-        <option value="Times New Roman">Times New Roman</option>
-        <option value="Courier New">Courier New</option>
-      </select>
-      <label for="title-size">Size: </label>
-      <select id="title-size" name="title-size">
-        <option value="24px">24</option>
-        <option value="36px">36</option>
-        <option value="48px">48</option>
-      </select>
-    </div>
+  <div class="chart-input-form">
+    <h1>BUILD YOUR OWN BAR CHART</h1>
+        <div class="form-row">
+          <div class="form-column">
+            <div class="input-group">
+              <label for="chart-title">Chart Title: </label>
+              <input id="chart-title">
+            </div>
+            <div class="input-group">
+              <label for="title-font">Title Font: </label>
+              <input id="title-font">
+            </div>
+            <div class="input-group">
+              <label for="title-size">Title Size: </label>
+              <input type="number" id="title-size" placeholder="Size units are pixels">
+            </div>
+            <div class="input-group">
+              <label for="title-colour">Title Colour: </label>
+              <input type="color" id="title-color">
+            </div>
+          </div>
+          <div class="form-column">
+            <div class="input-group">
+              <label for="y-axis-label">Y Axis Label: </label>
+              <input id="y-axis-label">
+            </div>
+            <div class="input-group">
+              <label for="x-axis-label">X Axis Label: </label>
+              <input id="x-axis-label">
+            </div>
+            <div class="input-group">
+              <label for="value-label-position">Value Label Position: </label>
+              <select id="value-label-position">
+                <option value="top">Top of Bar</option>
+                <option value="middle">Middle of Bar</option>
+                <option value="bottom">Bottom of Bar</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="bar-spacing">Bar Spacing: </label>
+              <input type="number" id="bar-spacing" placeholder="Size units are pixels">
+            </div>
+          </div>
+        </div>
   </div>
 
 </body>
