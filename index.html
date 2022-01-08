@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <script src="bar-chart-application.js"></script>
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
@@ -80,4 +80,28 @@
       <input type="submit" name="submit" class="btn btn-primary" value="BUILD THAT CHART!"/>
   </div>
 
+  <!--Copy of category entry form-->
+  <div class="form-row data-entry-copy" style="display:none;">
+    <div class="form-column">
+      <div class="input-group">
+        <label for="category-1-name">Category: </label>
+        <input id="category-1-name">
+      </div>
+      <div class="input-group">
+        <label for="category-1-label-color">Label color: </label>
+        <input type="color" id="category-1-label-color">
+      </div>
+    </div>
+    <div class="form-column category-values">
+      <div class="input-group">
+        <label for="category-1-value-1">Value 1: </label>
+        <input type="number" id="category-1-value-1">
+      </div>
+      <div class="input-group">
+        <label for="category-1-value-1-color">Bar color: </label>
+        <input type="color" id="category-1-value-1-color">
+      </div>
+      <button class="add-category-value category-1">+ Add Value</button>
+    </div>
+  </div>
 </body>
