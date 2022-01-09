@@ -73,11 +73,11 @@
         <div class="form-column category-values">
           <div class="input-group">
             <label for="category-1-value">Value: </label>
-            <input type="number" id="category-1-value">
+            <input type="number" class="category-1-value">
           </div>
           <div class="input-group">
             <label for="category-1-value-color">Bar color: </label>
-            <input type="color" id="category-1-value-color">
+            <input type="color" class="category-1-value-color">
           </div>
           <button class="add-category-1-value category-1">+ Add Value</button>
         </div>
@@ -90,24 +90,36 @@
   <div class="form-row data-entry-copy" style="display:none;">
     <div class="form-column">
       <div class="input-group">
-        <label for="category-1-name">Category: </label>
-        <input id="category-1-name">
+        <label for="category-x-name">Category: </label>
+        <input id="category-x-name">
       </div>
       <div class="input-group">
-        <label for="category-1-label-color">Label color: </label>
-        <input type="color" id="category-1-label-color">
+        <label for="category-x-label-color">Label color: </label>
+        <input type="color" id="category-x-label-color">
       </div>
     </div>
     <div class="form-column category-values">
       <div class="input-group">
-        <label for="category-1-value">Value 1: </label>
-        <input type="number" id="category-1-value">
+        <label for="category-x-value">Value: </label>
+        <input type="number" class="category-x-value">
       </div>
       <div class="input-group">
-        <label for="category-1-value-color">Bar color: </label>
-        <input type="color" id="category-1-value-color">
+        <label for="category-x-value-color">Bar color: </label>
+        <input type="color" class="category-x-value-color">
       </div>
-      <button class="add-category-value category-1">+ Add Value</button>
+      <button class="add-category-value category-x">+ Add Value</button>
+    </div>
+  </div>
+
+  <!-- Copy of category value inputs -->
+  <div class="form-column category-value-copy" style="display:none">
+    <div class="input-group">
+      <label for="category-x-value">Value: </label>
+      <input type="number" class="category-x-value">
+    </div>
+    <div class="input-group">
+      <label for="category-x-value-color">Bar color: </label>
+      <input type="color" class="category-x-value-color">
     </div>
   </div>
 
