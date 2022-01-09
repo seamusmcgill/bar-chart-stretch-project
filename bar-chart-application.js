@@ -1,5 +1,8 @@
 // Create a variable to store the number of categories
 let cat = 1;
+let data = {};
+let options = {};
+
 
 // Function to add form categories
 function addCategory() {
@@ -25,6 +28,30 @@ function addCategory() {
 
 }
 
+function collectAppearanceData() {
+  options = {
+    title: $("#chart-title").val(),
+    font: $("#title-font").val(),
+    size: $("#title-size").val(),
+    color: $("#title-color").val(),
+    yAxis: $("#y-axis-label").val(),
+    xAxis: $("#x-axis-label").val(),
+    labelPos: $("#value-label-position").val(),
+    spacing: $("#bar-spacing").val()
+  };
+  console.log(options);
+}
+
+function collectChartData() {
+  for (let i = 1; i <= cat; i++) {
+    data["category" + i  + "Name"] = $("#category-" + i + "-name").val();
+    data["category" + i + "Color"] = $("#category-" + i + "-label-color").val();
+    data["category" + i + "Value1"] = $("#category-" + i + "-value-1").val();
+    data["category" + i + "Value1Color"] = $("#category-" + i + "-value-1-color").val();
+  }
+  console.log(data);
+}
+
 // jQuery code to run functions on event handler instances
 $(document).ready(function() {
   $
@@ -35,4 +62,6 @@ $(document).ready(function() {
   $(".x-axis-label").hide();
   // Add category on button click
   $("#add-category").click(addCategory);
+  $("#submit").click(collectAppearanceData);
+  $("#submit").click(collectChartData);
 });
