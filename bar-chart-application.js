@@ -1,7 +1,6 @@
 // Create a variable to store the number of categories
 let cat = 1;
-let data = {};
-let options = {};
+
 
 
 // Function to add form categories
@@ -29,7 +28,7 @@ function addCategory() {
 }
 
 function collectAppearanceData() {
-  options = {
+  let options = {
     title: $("#chart-title").val(),
     font: $("#title-font").val(),
     size: $("#title-size").val(),
@@ -43,13 +42,27 @@ function collectAppearanceData() {
 }
 
 function collectChartData() {
+  let data = [];
   for (let i = 1; i <= cat; i++) {
-    data["category" + i  + "Name"] = $("#category-" + i + "-name").val();
-    data["category" + i + "Color"] = $("#category-" + i + "-label-color").val();
-    data["category" + i + "Value1"] = $("#category-" + i + "-value-1").val();
-    data["category" + i + "Value1Color"] = $("#category-" + i + "-value-1-color").val();
+    let category = {
+      name: $("#category-" + i + "-name").val(),
+      color: $("#category-" + i + "-label-color").val(),
+      value: $("#category-" + i + "-value").val(),
+      valueColor: $("#category-" + i + "-value-color").val()
+    }
+    data.push(category);
   }
   console.log(data);
+}
+
+function drawBarChart(data, options, element) {
+  let largestValue = 0;
+  for (let i = 1; i <= cat; i++) {
+    if (data["category" + i + "Value"] > largestValue) {
+      largestValue = data["category" + i + "Value"];
+    }
+  }
+
 }
 
 // jQuery code to run functions on event handler instances
@@ -62,6 +75,7 @@ $(document).ready(function() {
   $(".x-axis-label").hide();
   // Add category on button click
   $("#add-category").click(addCategory);
+  // Collect user inputted data on submit
   $("#submit").click(collectAppearanceData);
   $("#submit").click(collectChartData);
 });
