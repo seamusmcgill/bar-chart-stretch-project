@@ -55,7 +55,7 @@ function addCategoryValue() {
 
 function collectAppearanceData() {
   // Collect all the appearance data from the first half of the chart
-  let options = {
+  let appearance = {
     title: $("#chart-title").val(),
     font: $("#title-font").val(),
     size: $("#title-size").val(),
@@ -65,11 +65,11 @@ function collectAppearanceData() {
     labelPos: $("#value-label-position").val(),
     spacing: $("#bar-spacing").val()
   };
-  console.log(options);
+  return appearance;
 }
 
 function collectChartData() {
-  let userData = [];
+  let chartData = [];
   for (let i = 1; i <= cat; i++) {
     // Grab category details from user input form
     let category = {
@@ -89,14 +89,16 @@ function collectChartData() {
       category.value = parseInt($(".category-" + i + "-value").val());
     }
     // Push into data array
-    userData.push(category);
+    chartData.push(category);
   }
-  console.log(userData);
-  return userData;
+  console.log(chartData);
+  return chartData;
 }
 
 function drawBarChart(data, options, element) {
+  // Set the largest value to zero
   let largestValue = 0;
+  // Loop through the user-submitted chart data to find the largest value
   for (let i = 0; i < cat; i++) {
     if (Array.isArray(data[i]["value"])) {
       for (let j = 0; j < data[i]["value"].length; j++) {
@@ -108,7 +110,41 @@ function drawBarChart(data, options, element) {
     else if (data[i]["value"] > largestValue) {
       largestValue = data[i]["value"];
     }
-    console.log("Pass " + i  + " the largest value is: " + largestValue);
+  }
+  // Round the largest value to the nearest multiple of 10 to get the uppermost Y-axis marking
+  largestValue = Math.ceil((largestValue + 1) / 10) * 10;
+  let marking = 5;
+  // Add 5 markings on the Y-axis - each a product of the uppermost value divided by 5
+  $(".y-axis-markings div").each(function() {
+    $(this).html(Math.round((largestValue / 5) * marking) + " &macr;");
+    marking--;
+  })
+  // Add axis and chart titles
+  $(".chart-title").html(options["title"])
+    .attr("style", "font-family:" + options["font"] + "; font-size:" + options["size"] + "; color:" + options["color"]);
+  $(".y-axis-title").html(options["yAxis"]);
+  $(".x-axis-title").html(options["xAxis"]);
+
+  // Add bars to chart
+  for (let i = 0; i < cat; i++) {
+    // Create variable with bar template to add into chart area
+    let newBar = '<div class="bar-'+ (i + 1) +'-area">'+$(".bar-area-template").html()+'</div>';
+    $(".chart-area").append(newBar);
+    // Update CSS with inputted values
+    $(".bar-" + (i + 1) + "-area").css({"display": "flex", "flex": (100 / cat) + "%", "justify-content": "center",
+    "height": Math.round(((parseInt(data[i]["value"])) / largestValue) * 100) + "%", "background-color": data[i]["valueColor"],
+    "margin-left": (parseInt(options["spacing"]) / 2) + "px", "margin-right": (parseInt(options["spacing"]) / 2) + "px"});
+    // Set value label positioning
+    if (options["labelPos"] === "top") {
+      $(".bar-" + (i + 1) + "-area").css({"align-items": "flex-start"});
+    } else if (options["labelPos"] === "middle") {
+      $(".bar-" + (i + 1) + "-area").css({"align-items": "center"});
+    } else {
+      $(".bar-" + (i + 1) + "-area").css({"align-items": "flex-end"});
+    }
+    $("#bar-x").attr("id", "bar-" + (i + 1));
+    // Add value labels on bar
+    $(".bar-" + (i + 1) + "-area p").html(data[i]["value"]).css({"background-color": "white", "border-radius": "10px"});
   }
 }
 
@@ -127,8 +163,14 @@ $(document).ready(function() {
   // For adding values to dynamically generated categories
   $("div").on("click", ".add-category-value", addCategoryValue);
   // Collect user inputted data on submit
-  $("#submit").click(collectAppearanceData);
   $("#submit").on("click", function() {
-    drawBarChart(collectChartData());
+    drawBarChart(collectChartData(), collectAppearanceData());
+  });
+  $("#submit").on("click", function() {
+    $(".chart-input-form").hide();
+    $(".chart-title").show();
+    $(".chart-container").show();
+    $(".x-axis").show();
+    $(".x-axis-label").show();
   });
 });
